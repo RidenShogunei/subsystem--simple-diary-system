@@ -85,10 +85,13 @@ const Register = () => {
   // 在这里执行注册表单的逻辑
   // 可以调用 onFinish 或直接处理表单数据
    instance.appContext.config.globalProperties.$axios
-    .get("http://localhost:3000/")
+    .post("/login", {
+      username: formState.username.values,
+      password: formState.password.values,
+    })
     .then((response) => {
       // 处理响应数据
-      if (response.data) {
+      if (response.data === true) {
         router.push("/diary");
       }
       console.log(response.data);

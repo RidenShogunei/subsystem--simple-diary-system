@@ -88,7 +88,7 @@ const Register = () => {
     .get("http://localhost:3000/")
     .then((response) => {
       // 处理响应数据
-      if (response.data) {
+      if (response.data === true) {
         router.push("/diary");
       }
       console.log(response.data);

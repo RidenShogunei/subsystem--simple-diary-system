@@ -44,8 +44,6 @@
 
 <script setup>
 import router from "../../router/index";
-import {getCurrentInstance } from 'vue';
-const instance = getCurrentInstance();
 const formState = reactive({
   username: "",
   password: "",
@@ -79,27 +77,15 @@ const submit = () => {
       // 处理错误
       console.error(error);
     });
+  onFinish(formState);
 };
 
 const Register = () => {
   // 在这里执行注册表单的逻辑
   // 可以调用 onFinish 或直接处理表单数据
-   instance.appContext.config.globalProperties.$axios
-    .get("http://localhost:3000/")
-    .then((response) => {
-      // 处理响应数据
-      if (response.data) {
-        router.push("/diary");
-      }
-      console.log(response.data);
-    })
-    .catch((error) => {
-      // 处理错误
-      console.error(error);
-    });
   console.log("进入注册页");
-  //router.push("/register");
-  //onFinish(formState);
+  router.push("/register");
+  onFinish(formState);
 };
 </script>
 
